@@ -10,10 +10,12 @@
 </head>
 <body>
     <!--Setup JumboTron  -->
-    <section class="jumbotron">
-        <h1>Let's Check the Weather!</h1>
+    <head class="jumbotron">
+           <h1>Let's Check the Weather!</h1>
+
             <!-- Slider of different images of the weather -->
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <section id="myCarousel" class="carousel slide" data-ride="carousel">
+
                 <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -53,13 +55,16 @@
                         <span class="sr-only">Next</span>
                     </a>
               </div>
-          </div>
-            
-      
-      <div class="container">
-           
-      </div>
-    </section>
+            </section>  
+    </head >
+
+    <div class="container">
+      <!--Search bar -->
+        <div class="search-container">
+             <input type="text" placeholder="Search.." name="search">
+             <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+  </div>
 
     <!-- Script Source -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
