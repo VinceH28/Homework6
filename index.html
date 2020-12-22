@@ -4,6 +4,8 @@
     <title>What's the Weather?...</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
  
     <title>Document</title>
@@ -14,7 +16,7 @@
         <h1>Let's Check the Weather!</h1>
 
             <!-- Slider of different images of the weather -->
-            <section id="myCarousel" class="carousel slide" data-ride="carousel">
+            <nav id="myCarousel" class="carousel slide" data-ride="carousel">
 
                 <!-- Indicators -->
                     <ol class="carousel-indicators">
@@ -26,23 +28,23 @@
                 <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
-                        <img src="https://www.ksnt.com/wp-content/uploads/sites/86/2016/03/sunshine_36366417_ver1.0-8.jpg?w=2560&h=1440&crop=1" width="800" height="400" alt="clear sunny sky in summer">
+                        <img src="https://www.ksnt.com/wp-content/uploads/sites/86/2016/03/sunshine_36366417_ver1.0-8.jpg?w=2560&h=1440&crop=1" width="1000" height="400" alt="clear sunny sky in summer">
                     </div>
               
                   <div class="item">
-                    <img src="https://s3.amazonaws.com/static.beavercountyradio.com/wp-content/uploads/2019/05/27071943/rain.jpg" width="800" height="400" alt="rainy weather">
+                    <img src="https://s3.amazonaws.com/static.beavercountyradio.com/wp-content/uploads/2019/05/27071943/rain.jpg" width="1000" height="400" alt="rainy weather">
                   </div>
               
                   <div class="item">
-                    <img src="https://visualcue.com/2016/wp-content/uploads/2016/01/jan22-feature.jpg" width="800" height="400" alt="snowy weather">
+                    <img src="https://visualcue.com/2016/wp-content/uploads/2016/01/jan22-feature.jpg" width="1000" height="400" alt="snowy weather">
                   </div>
     
                   <div class="item">
-                      <img src="https://www.livinglanguage.com/blog/wp-content/uploads/2014/10/IMG_0271.jpg" width="800" height="400" alt="fall weather; tree with orange leaves">
+                      <img src="https://www.livinglanguage.com/blog/wp-content/uploads/2014/10/IMG_0271.jpg" width="1000" height="400" alt="fall weather; tree with orange leaves">
                   </div>
     
                   <div class="item">
-                      <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sea-of-yellow-and-orange-daffodils-royalty-free-image-135169065-1552990435.jpg" width="800" height="400" alt="forest setting; flowers blooming">
+                      <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sea-of-yellow-and-orange-daffodils-royalty-free-image-135169065-1552990435.jpg" width="1000" height="400" alt="forest setting; flowers blooming">
                   </div>
               
                     <!-- Left and right controls -->
@@ -55,16 +57,36 @@
                         <span class="sr-only">Next</span>
                     </a>
               </div>
-            </section> 
+            </nav> 
     </head>
     <br>
     <br>
+    
+    <!-- Search Bar and Display 5 Day forecast -->
+    <main id="container">
         <!--Search bar -->
-        <div class="search-container">
-         <input type="text" placeholder="Enter City..." name="search">
-         <button type="submit"><i class="fa fa-search"></i></button>
-         </div>
-        </div>
+        <aside id="search">
+         <h2>Search a City!...</h2>
+
+            <form id="city-form">
+                <label for="city-input">Enter City...</label>
+                <input type="text" id="city-input">
+
+                <!-- Button to trigger Ajax Call -->
+                <input id="find-city" type="submit" value="City Search">
+            </form>
+        </aside>
+    
+        <!-- Weather contents in here -->
+        <section id="weather-view">
+            <H1>5 Day Forecast</H1>
+
+        </section>
+
+    </main>
+
+    <!--JQuery Script & JavaScript Source-->
+    <script src="script.js"></script>
 
     <!-- Script Source -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
