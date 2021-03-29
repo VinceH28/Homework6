@@ -65,45 +65,56 @@
         <br>
 
     
-        <main id="WeatherContainer">
-            <!--Search Bar-->
+        <main class="container" id="WeatherContainer">
+            <!--Page Title & Search Bar-->
             <h1>
                 Weather Dashboard
             </h1>
             <form id="searchForm">
                 <div class="input-group">
-               <input type="text" class="form-control" id="cityName" placeholder="Search a City!..." name="query"/>
-              <div class="input-group-append">
-                 <button class="btn">
-                     <i class="fas fa-search"> Search </i>
-                    </button>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="cityName" 
+                        placeholder="Search a City!..." 
+                        name="query"
+                    />
+                    <div class="input-group-append">
+                        <button class="btn">
+                            <i class="fas fa-search"> Search </i>
+                        </button>
+                    </div>
                 </div>
-              </div>
             </form>
     
+            <br>
+            <br>
+
             <!-- 5 Day Weather Forecast -->
             <section class="container"
-                <div class="jumbotron p-4 p-md-5 bg-transparent text-light" id="queryContent"> 
-                    <div 
+                <div 
+                    class="jumbotron p-4 p-md-5 bg-transparent text-light" 
+                    id="queryContent"> 
+                </div>
+                <div 
                         class="col-md-6 px-0" id="queryDetails">
-                    </div>   
-
-                    <div class="row">
+                </div>   
+                <div class="row">
                         <div class="col-12 pt-3">
                             <h3> 5 Day-Forecast</h3>
                         </div>
                         <div id="fiveDay" 
-                            class="col-12 d-flex flex-row flex-wrap       justify-content-start">
+                            class="col-12 d-flex flex-row flex-wrap justify-content-start">
                         </div>
                     </div>
 
                     <!-- Search History List -->
                     <div class="row pb-3">
                         <div class="col-12">
-                        <ul 
-                            class="list-group flex-wrap"            id="searchHistory">
-
-                        </ul>
+                            <ul 
+                                class="list-group flex-wrap"            id="searchHistory">
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
