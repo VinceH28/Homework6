@@ -28,3 +28,22 @@ h1 {
     padding: auto;
     margin: 20px;
 }
+
+
+#searchForm{
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: #4c9cc2;
+    color: #fff;
+}
+
+.btn:hover {
+    color: #e8e8e8;
+}
+
