@@ -30,8 +30,37 @@ const todaysWeather = async (citySearch) => {
     <p>Wind Speed: ${weatherData.main.temp} MPH</p>
   `);
   $('#searchDetails').append(citysearchElement);
-  const latitue = weatherData.coord.lat;
-  const longitue = weatherData.coord.lon;
+  const latitude = weatherData.coord.lat;
+  const longitude = weatherData.coord.lon;
   
-
+  //UV Index
+  axios
+    .get(`https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${apiKey}`
+    )
+    .then(function (uvIndexRes) {
+      let uvIndex = uvIndexRes.data.value;
+      let uvIndexEl = $(`
+      <p> UV Index:
+      <span id="uvindex">${uvIndex}</span>
+      </p>
+      `);
+      $('#quearyDetails').append(uvIndexEl);
+      fivedayForecast(latitude, longitude);
+      //Index Colors
+      if (uvIndex < 2) {
+        uvindex.classList.add("uviGreen")
+        $('Low');
+      } else if (uvIndex < 5) {
+        uvindex.classList.add("uviYellow")
+        $('Moderate');
+      } else if (uvIndex < 7) {
+        uvindex.classList.add("uviOrange")
+        $('High');
+      } else if (uvIndex < 10) {
+        uvindex.classList.add("uviRed")
+        $('Very High');
+      } else {
+        uvindex.classList.add("ultraviolet");
+      }
+    });
 }
