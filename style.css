@@ -68,3 +68,55 @@ h1 {
 h3{
     text-align: center;
 }
+
+.history {
+    margin: 5px 0;
+}
+
+p {
+    font-size: 14px;
+}
+
+.uvIndexGreen {
+    background-color: green;
+    display: inline;
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+    color: #fff
+}
+
+.uvIndexYeloow {
+    background-color: yellow;
+    display: inline;
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+    color: #fff
+}
+
+.uvIndexOrange {
+    background-color: orange;
+    display: inline;
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+    color: #fff
+}
+
+.uvIndexRed {
+    background-color: red;
+    display: inline;
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+    color: #fff
+}
+
+.uvIndexViolet {
+    background-color: violet;
+    display: inline;
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+    color: #fff
+}
+
+#searchContent {
+    display: none;
+}
