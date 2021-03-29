@@ -20,7 +20,7 @@ const todaysWeather = async (citySearch) => {
   const imageURL = `https://openweathermap.org/img/w/${weatherImage}.png`;
 
   //Attach data to page
-  let citysearchElement = $(`
+  let citySearchElement = $(`
     <h1 id ='cityName'>
     ${weatherData.name} (${today}) <img src='${imageURL}'/>
     </h1>
@@ -28,7 +28,7 @@ const todaysWeather = async (citySearch) => {
     <P> Humidity: ${weatherData.main.temp} %</p>
     <p>Wind Speed: ${weatherData.main.temp} MPH</p>
   `);
-  $('#searchDetails').append(citysearchElement);
+  $('#searchDetails').append(citySearchElement);
   const latitude = weatherData.coord.lat;
   const longitude = weatherData.coord.lon;
   
@@ -101,3 +101,30 @@ const todaysWeather = async (citySearch) => {
     });
   }
 }
+
+//Add Event Listeners
+
+// 1. Input Form
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  
+  let citySearch= form.elements.query.value.trim();
+  currentWeather(citySearch);
+  if (!searchHistroy.includes(citySearch)) {
+    searchHistroy.push(citySearch);
+    let citySearchElement = $(`
+    <li class="list-group-item bg-transparent text-light text-center pointer history">${citySearch}</li>
+    `);
+    $('#searchHistory').append(citySearch);
+  }
+
+  localStorage.setItem('citySearch', JSON.stringify(searchHistroy));
+  form.elements.query.value = '';
+});
+// 2. List
+$(document).on('click', '.list-group-item', function () {
+  let citySearchList = $(this).text();
+  currentWeather(citySearchList);
+})
+
+})
