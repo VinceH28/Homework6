@@ -12,10 +12,12 @@ const currentDay = luxon.DateTime.local().toLocaleString({
 
 //API call for City Search
 const todaysWeather = async (citySearch) => {
-
-  $("#queryContent").css("display", "block");
-  $("#queryDetails").empty();
-  const weatherData = res.data;
+  const results = await axios.get(
+    `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&units=imperial&appid=${apiKey}`
+  );
+  $("#searchContent").css("display", "block");
+  $("#searchDetails").empty();
+  const weatherData = results.data;
   const weatherImage = weatherData.weather[0].icon;
   const imageURL = `https://openweathermap.org/img/w/${weatherImage}.png`;
 
@@ -26,7 +28,7 @@ const todaysWeather = async (citySearch) => {
     </h1>
     <p> Temp: ${weatherData.main.temp} °F </p>
     <P> Humidity: ${weatherData.main.temp} %</p>
-    <p>Wind Speed: ${weatherData.main.temp} MPH</p>
+    <p> Wind Speed: ${weatherData.main.temp} MPH</p>
   `);
   $('#searchDetails').append(citySearchElement);
   const latitude = weatherData.coord.lat;
@@ -43,40 +45,41 @@ const todaysWeather = async (citySearch) => {
       <span id="uvindex">${uvIndex}</span>
       </p>
       `);
-      $('#quearyDetails').append(uvIndexEl);
+      $('#searchDetails').append(uvIndexEl);
       fivedayForecast(latitude, longitude);
       //Index Colors
       if (uvIndex < 2) {
-        uvindex.classList.add("uviGreen")
+        uvIndex.classList.add("uviGreen")
         $('Low');
       } else if (uvIndex < 5) {
-        uvindex.classList.add("uviYellow")
+        uvIndex.classList.add("uviYellow")
         $('Moderate');
       } else if (uvIndex < 7) {
-        uvindex.classList.add("uviOrange")
+        uvIndex.classList.add("uviOrange")
         $('High');
       } else if (uvIndex < 10) {
-        uvindex.classList.add("uviRed")
+        uvIndex.classList.add("uviRed")
         $('Very High');
       } else {
-        uvindex.classList.add("ultraviolet");
+        uvIndex.classList.add("ultraviolet");
       }
     });
+};
 
-  //Five Day Forecast
-  function fivedayForecast(latitude, longitude) {
+//Five Day Forecast
+function fivedayForecast(latitude, longitude) {
     axios
     .get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKey}`
     )
-    .then(function (finvedayForecastRes) {
-      $('#fiveDay').empty();
+    .then(function (fivedayForecastRes) {
+      $('#fivedayForecast').empty();
       for (let i = 1; i <6; i++) {
         let forecastWeatherInfo = {
-          date: finvedayForecastRes.data.daily[i].dt,
-          temp: finvedayForecastRes.data.temp.day,
-          image: finvedayForecastRes.data.weather[0].image,
-          humidity: finvedayForecastRes.data.daily[i].humidity,
+          date: fivedayForecastRes.data.daily[i].dt,
+          temp: fivedayForecastRes.data.temp.day,
+          image: fivedayForecastRes.data.weather[0].image,
+          humidity: fivedayForecastRes.data.daily[i].humidity,
         };
         let forecastCurrentDate = luxon.DateTime.fromSeconds(
           forecastWeatherInfo.date
@@ -99,7 +102,6 @@ const todaysWeather = async (citySearch) => {
     $('#fiveDay').append(forecastWeatherCard);
       }
     });
-  }
 }
 
 //Add Event Listeners
