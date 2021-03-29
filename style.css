@@ -47,3 +47,24 @@ h1 {
     color: #e8e8e8;
 }
 
+#city-input {
+    font-size: x-large;
+}
+
+#cityName.form-control{
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#input-group-append{
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+h3{
+    text-align: center;
+}
