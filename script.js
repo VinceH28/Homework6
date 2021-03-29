@@ -127,4 +127,13 @@ $(document).on('click', '.list-group-item', function () {
   currentWeather(citySearchList);
 })
 
-})
+//Display most recent citySearch on page rephresh
+$(document).ready(function () {
+  let citySearchHistory = JSON.parse(localStorage.getItem('citySearch'));
+
+  if (citySearchHistory !== null) {
+    let lastSearchElment = citySearchHistory.length -1;
+    let lastcitySearchElement = citySearchHistory[lastSearchElment];
+    currentWeather(lastcitySearchElement)
+  }
+});
