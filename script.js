@@ -49,16 +49,16 @@ const todaysWeather = async (citySearch) => {
       fivedayForecast(latitude, longitude);
       //Index Colors
       if (uvIndex < 2) {
-        uvIndex.classList.add("uviGreen")
+        uvIndex.classList.add("uvIndexGreen")
         $('Low');
       } else if (uvIndex < 5) {
-        uvIndex.classList.add("uviYellow")
+        uvIndex.classList.add("uvIdndexYellow")
         $('Moderate');
       } else if (uvIndex < 7) {
-        uvIndex.classList.add("uviOrange")
+        uvIndex.classList.add("uvIndexOrange")
         $('High');
       } else if (uvIndex < 10) {
-        uvIndex.classList.add("uviRed")
+        uvIndex.classList.add("uvIndexRed")
         $('Very High');
       } else {
         uvIndex.classList.add("ultraviolet");
