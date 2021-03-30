@@ -34,18 +34,37 @@
                     </div>
                 </div>
             </form>
-    
+
+            <!--Side navbar -->
+            <aside class="col-md-3 blog-sidebar">
+                <div class="row">
+                    <div class="col-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab"     role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active"
+                            id="v-pills-home-tab" data-toggle="pill"
+                            href="#v-pills-home" 
+                            role="tab" aria-controls="v-pills-home" aria-selected="true">
+                        </a>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+                            <div class="tab-pane fad show active" id="v-pills home" role="tabpanel" aria-labelledby="v-pills-home-tab"></div>
+                        </div>
+                    </div>
+                </div>    
+            </aside>
             <br>
             <br>
 
-            <!-- 5 Day Weather Forecast -->
-            <section class="container"> 
+            <!-- 5 Day Weather Forecast Table Content -->
+            <section class="container" id="Current"> 
                 <div 
                     class="jumbotron p-4 p-md-5 bg-transparent text-light" 
-                    id="queryContent"> 
+                    id="searchContent"> 
                 </div>
                 <div 
-                        class="col-md-6 px-0" id="queryDetails">
+                        class="col-md-6 px-0" id="searchDetails">
                 </div>   
                 <div class="row">
                         <div class="col-12 pt-3">
@@ -71,6 +90,7 @@
         <!--JQuery Script & JavaScript Source-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Script Source -->
+        <script src="script.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </body>
