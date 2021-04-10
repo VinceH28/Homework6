@@ -11,7 +11,7 @@ const today = luxon.DateTime.local().toLocaleString({
   }); 
 
 //API call for City Weather Search Resuls
-const todaysWeather = async (citySearch) => {
+const currentWeather = async (citySearch) => {
   const results = await axios.get(
     `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&units=imperial&appid=${apiKey}`
   );
@@ -49,23 +49,23 @@ const todaysWeather = async (citySearch) => {
       fivedayapiData(latitude, longitude);
       //Index Colors
       if (uvIndex >= 2) {
-        uvIndex.classList.add("uvIndexGreen")
+        uvIndexEl.addClass("uvIndexGreen")
         $('Low');
       } else if (UVindex > 2 && UVindex <= 5) {
-        uvIndex.classList.add("uvIndexGreen")
+        uvIndexEl.addClass("uvIndexGreen")
         $('Low');
       }
       else if (UVIndex > 5 && UVIndex <= 7) {
-        uvIndex.classList.add("uvIdndexYellow")
+        uvIndexEl.addClass("uvIdndexYellow")
         $('Moderate');
       } else if (uvIndex < 7) {
-        uvIndex.classList.add("uvIndexOrange")
+        uvIndexEl.addClass("uvIndexOrange")
         $('High');
       } else if (uvIndex >=7 && uvIndex <= 10) {
-        uvIndex.classList.add("uvIndexRed")
+        uvIndexEl.addClass("uvIndexRed")
         $('Very High');
       } else if (uvIndex < 10)  {
-        uvIndex.classList.add("ultraviolet")
+        uvIndexEl.addClass("ultraviolet")
         $('Very High');
       } 
 
@@ -79,12 +79,13 @@ function fivedayapiData(latitude, longitude) {
       `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${apiKey}`
     )
     .then(function (fivedayapiDataRes) {
+      console.log(fivedayapiDataRes);
       $('#fivedayapiData').empty();
       for (let i = 1; i <6; i++) {
         let apiWeatherInfo = {
           date: fivedayapiDataRes.data.daily[i].dt,
-          temp: fivedayapiDataRes.data.temp.day,
-          image: fivedayapiDataRes.data.weather[0].image,
+          temp: fivedayapiDataRes.data.daily[i].temp.day,
+          image: fivedayapiDataRes.data.daily[i].weather[0].icon,
           humidity: fivedayapiDataRes.data.daily[i].humidity,
         };
         let forecastCurrentDate = luxon.DateTime.fromSeconds(
@@ -115,15 +116,16 @@ function fivedayapiData(latitude, longitude) {
 // 1. Input Form
 form.addEventListener('submit', function (event) {
   event.preventDefault();
-  
-  let citySearch= form.elements.query.value.trim();
+  console.log(form);
+
+  let citySearch= document.querySelector("#cityName").value.trim()
   currentWeather(citySearch);
   if (!userSearch.includes(citySearch)) {
     userSearch.push(citySearch);
     let usercitySearch = $(`
     <li class="list-group-item bg-transparent text-light text-center pointer history">${citySearch}</li>
     `);
-    $('#searchHistory').append(citySearch);
+    $('#searchHistory').append(usercitySearch);
   }
 
   localStorage.setItem('citySearch', JSON.stringify(userSearch));
